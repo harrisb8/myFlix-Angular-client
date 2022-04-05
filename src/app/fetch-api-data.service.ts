@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, catchError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
@@ -40,16 +39,17 @@ private handleError(error: HttpErrorResponse): any {
 
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
+    //const newLocal = map(this.extractResponseData);
+    const response = this.http.get(apiUrl + 'movies', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
-      })}).pipe(
-      map(this.extractResponseData),
-      catchError(this.handleError)
+      }),
+    });
+      return response.pipe(map(this.extractResponseData), catchError(this.handleError)
     );
   }
 // Non-typed response extraction
-  private extractResponseData(res: Response): any {
+  private extractResponseData(res: any): any {
     const body = res;
     return body || { };
   }
@@ -151,4 +151,5 @@ private handleError(error: HttpErrorResponse): any {
     map(this.extractResponseData),
     catchError(this.handleError)
   );
+  }
 }
