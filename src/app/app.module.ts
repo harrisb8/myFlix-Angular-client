@@ -13,6 +13,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { UserRegistrationFormComponent } from './user-registration-form/user-registration-form.component';
 import { UserLoginFormComponent } from './user-login-form/user-login-form.component';
+import { MovieCardComponent } from './movie-card/movie-card.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import { UserLoginFormComponent } from './user-login-form/user-login-form.compon
     AppComponent,
     UserRegistrationFormComponent,
     UserLoginFormComponent,
+    MovieCardComponent,
     
   ],
   imports: [
