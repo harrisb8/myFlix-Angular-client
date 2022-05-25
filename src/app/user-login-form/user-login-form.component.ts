@@ -3,7 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 
 // This import brings in the API calls we created in 6.2
-import { FetchApiDataService, UserRegistrationService } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service';
 
 // This import is used to display notifications back to the user
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -19,10 +19,10 @@ export class UserLoginFormComponent implements OnInit {
   /*
   get information and store it into userCredentials
   */
-  @Input() userCredentials = { Username: '', Password: '' };
+  @Input() userData = { Username: '', Password: ''};
 
   constructor(
-    public fetchApiData: UserRegistrationService,
+    public fetchApiData: FetchApiDataService,
     public dialogRef: MatDialogRef<UserLoginFormComponent>,
     public snackBar: MatSnackBar,
     public router: Router 
@@ -31,7 +31,7 @@ export class UserLoginFormComponent implements OnInit {
   ngOnInit(): void {}
   //this sends code/ function send the form input to the backend
   loginUser(): void {
-    this.fetchApiData.userLogin(this.userCredentials).subscribe((result) => {
+    this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       //
       localStorage.setItem('user', result.user.Username);
       localStorage.setItem('token', result.token);

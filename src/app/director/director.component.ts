@@ -12,10 +12,10 @@ export class DirectorComponent implements OnInit {
   constructor(public fetchApiData: FetchApiDataService) { }
 
   ngOnInit(): void {
-    this.director();
+   // this.director();
   }
 
-  director(): void {
+  director(): any {
     this.fetchApiData.getDirector().subscribe((resp: any) => {
       this.director = resp;
       console.log(this.director);
