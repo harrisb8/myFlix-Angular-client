@@ -4,7 +4,9 @@ import { Observable, throwError, catchError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://stormy-taiga-55813.herokuapp.com/users';
+const apiUrl = 'https://movie-app-harris-02.herokuapp.com/';
+ 
+//'https://stormy-taiga-55813.herokuapp.com/';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,8 +39,8 @@ private handleError(error: HttpErrorResponse): any {
     console.error('Some error occurred:', error.error.message);
     } else {
     console.error(
-        `Error Status code ${error.status}, ` +
-        `Error body is: ${error.error}`);
+        `Error Status code ${JSON.stringify(error.status)}, ` +
+        `Error body is: ${JSON.stringify(error.error)}`);
     }
     return throwError(
     'Something bad happened; please try again later.');
