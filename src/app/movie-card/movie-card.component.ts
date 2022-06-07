@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DirectorComponent } from '../director/director.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   
-  constructor(public fetchApiData: FetchApiDataService) { }
+  constructor(public fetchApiData: FetchApiDataService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -22,5 +24,13 @@ export class MovieCardComponent implements OnInit {
         return this.movies;
       });
     }
+
+    openDirectorDialog(): void {
+      this.dialog.open(DirectorComponent, {
+       width: '60%',
+       height: '60%'
+      });
+    }
+
   }
 

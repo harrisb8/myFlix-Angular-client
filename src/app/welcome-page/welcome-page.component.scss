@@ -1,8 +1,18 @@
-/*$backgroundColor: #341C09;
+$backgroundColor: #87CEEB;
 $cardColor: #D4E4F7;
 $textColor: #000000;
 $boxShadowColor: #2369B8;
-$buttonColor: #FD7208;*/
+$buttonColor: #FD7208;
+
+.main-page {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    background-color: #87CEEB;
+    
+}
 
 
 
