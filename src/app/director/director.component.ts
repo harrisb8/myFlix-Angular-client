@@ -9,7 +9,9 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DirectorComponent implements OnInit {
 
-  constructor(public fetchApiData: FetchApiDataService) { }
+  constructor(public fetchApiData: FetchApiDataService,  public dialog: MatDialog)  {
+    
+   }
 
   ngOnInit(): void {
    // this.director();
