@@ -77,7 +77,7 @@ private handleError(error: HttpErrorResponse): any {
 
   getDirector(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'director/:Name', {headers: new HttpHeaders(
+    return this.http.get(apiUrl + 'movies/director/:Name', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -88,7 +88,7 @@ private handleError(error: HttpErrorResponse): any {
 
   getGenre(): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'genre/:Name', {headers: new HttpHeaders(
+    return this.http.get(apiUrl + 'movies/genre/:Name', {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(

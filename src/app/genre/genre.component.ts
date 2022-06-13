@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service'
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Component({
   selector: 'app-genre',
@@ -8,7 +10,7 @@ import { FetchApiDataService } from '../fetch-api-data.service'
 })
 export class GenreComponent implements OnInit {
 
-  constructor(public fetchApiData: FetchApiDataService) { }
+  constructor(public fetchApiData: FetchApiDataService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.genre();
