@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
+import { MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-profile-view',
@@ -8,8 +11,12 @@ import { FetchApiDataService } from '../fetch-api-data.service';
 })
 export class ProfileViewComponent implements OnInit {
   @Input() userData = { Username: '', Email: '', Birthday: ''};
-  constructor( public fetchApiData: FetchApiDataService) { }
-
+  constructor(
+     public fetchApiData: FetchApiDataService,
+     public dialogRef: MatDialogRef<ProfileViewComponent>,
+     public snackBar: MatSnackBar,
+     ) { }
+    
   ngOnInit(): void {
    /*  this.fetchApiData.getUserProfile().subscribe((result: any) => {
       console.log(result)
@@ -22,8 +29,21 @@ export class ProfileViewComponent implements OnInit {
 
   editUser() {
     this.fetchApiData.editUserProfile().subscribe((result: any) => {
-      console.log(result)
+     { console.log(result);
+     this.dialogRef.close();
+    }
     });
   }
+  
+  //function setIcon() {
+    // 
+    //if (movies.find(x=> favoriteMovies.includes(x._id)) )
+    //{
+    //retun true
+    //}
+    //else {
+    //return false
+    //}
+    
 
 }
