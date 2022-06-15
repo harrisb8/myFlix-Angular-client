@@ -26,7 +26,7 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
-    SetIcon(): void {
+    //SetIcon(): void {
     //if (movies.find(x=> favoriteMovies.includes(x._id)) )
     //{
     //retun true
@@ -34,7 +34,7 @@ export class MovieCardComponent implements OnInit {
     //else {
     //return false
       //  });
-      }
+      //}
 
     openDirectorDialog(): void {
       this.fetchApiData.getDirector().subscribe((resp: any) => {
