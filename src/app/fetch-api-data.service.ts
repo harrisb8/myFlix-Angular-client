@@ -6,8 +6,8 @@ import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = //'https://movie-app-harris-02.herokuapp.com/';
- 
-'https://stormy-taiga-55813.herokuapp.com/';
+'https://angular-m.herokuapp.com/';
+//'https://stormy-taiga-55813.herokuapp.com/';
 @Injectable({
   providedIn: 'root'
 })
