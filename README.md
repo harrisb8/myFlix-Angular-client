@@ -25,3 +25,9 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+Project Breif
+
+In order to create this Angular version of a small movie database. I use the api of a movie database that I created earlier in the curriculum using Mongodb and Heroku. The Anuglar website allows users to sign up and login to the database. Once logged in the user is then able to view the movies in the database. The user will have be able to click on buttons for more information on the synopsis, director and genre of the movie. As well as have the option to add a movie to favorites. 
+
+Some challenges with this website was with CORS and getting access to the database. Which I had to go back into my backend code and add urls to my allowed origin in order to access the information. Another challenge that I ran into during this project was that any updates that I made to github were not being updated to my Heroku database. This is because I did not push my changes through the terminal using git add . I struggled with the styling of the site as well trying to best grab the elements that needed to be targerted. 
