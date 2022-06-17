@@ -17,8 +17,8 @@ export class DirectorComponent implements OnInit {
    // this.director();
   }
 
-  director(): any {
-    this.fetchApiData.getDirector().subscribe((resp: any) => {
+  director(Director:any): any {
+    this.fetchApiData.getDirector(Director).subscribe((resp: any) => {
       this.director = resp;
       console.log(this.director);
       return this.director;

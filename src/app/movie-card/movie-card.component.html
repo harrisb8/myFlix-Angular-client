@@ -1,5 +1,5 @@
-<div style="display: flex;">
-    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;">
+<div style="display: flex;" class="background">
+    <mat-card *ngFor="let movie of movies;" style="flex: 1 1 auto;" >
         <mat-card-header>
         <mat-card-title>{{movie.Title}}</mat-card-title>
             <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
@@ -9,21 +9,22 @@
             <button
                 mat-button
                 color="primary"
+                (click)="openGenreDialog(movie.Genre.Description)"
             >
                 Genre
             </button>
+
             <button
                 mat-button
                 color="primary"
-                (click)="openGenreDialog()"
+                (click)="openDirectorDialog()"
             >
                 Director
             </button>
             <button
                 mat-button
                 color="primary"
-                (click)="openDirectorDialog()"
-            >
+                         >
                 Synopsis
             </button>
             <mat-icon>
