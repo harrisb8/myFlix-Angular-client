@@ -77,7 +77,7 @@ private handleError(error: HttpErrorResponse): any {
 
   getDirector(Director: any): Observable<any> {
     const token = localStorage.getItem('token');
-    return this.http.get(apiUrl + 'movies/director/' + Director, {headers: new HttpHeaders(
+    return this.http.get(apiUrl + 'directors/' + Director, {headers: new HttpHeaders(
       {
         Authorization: 'Bearer ' + token,
       })}).pipe(
@@ -111,15 +111,8 @@ private handleError(error: HttpErrorResponse): any {
 }
 
  getFavoriteMovies(): Observable<any> {
-  const token = localStorage.getItem('token');
-  const username = localStorage.getItem('user');
-  return this.http.get(apiUrl + `user/${username}/movies`, {headers: new HttpHeaders(
-    {
-      Authorization: 'Bearer ' + token,
-    })}).pipe(
-    map(this.extractResponseData),
-    catchError(this.handleError)
-  );
+  const user: any = localStorage.getItem("user")
+  return JSON.parse(user).FavoriteMovies
 }  
 
  addFavoriteMovie() : Observable<any> {

@@ -12,11 +12,20 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
-  
-  constructor(public fetchApiData: FetchApiDataService, public dialog: MatDialog) { }
+  favoriteMovies: any[] = [];
+  public heartIcon: string = "favorite_border"; 
+  //filled = favorite
+  constructor(
+    public fetchApiData: FetchApiDataService, 
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getMovies();
+    console.log(this.getFavoriteMovies()) 
+   
+  }
+  getFavoriteMovies(): any {
+    return this.fetchApiData.getFavoriteMovies();
   }
 
   getMovies(): void {
@@ -27,19 +36,26 @@ export class MovieCardComponent implements OnInit {
       });
     }
 
-    //SetIcon(): void {
-    //if (movies.find(x=> favoriteMovies.includes(x._id)) )
-    //{
-    //retun true
-    //}
-    //else {
-    //return false
-      //  });
-      //}
+    SetIcon(id: any): boolean {
+ 
+    if (this.getFavoriteMovies().includes(id) )
+    {
+      console.log(id)
+    return true
+    }
+    else {
+    return false
+    }
+  }
 
-    openDirectorDialog(): void {
+    openDirectorDialog(Name: string, Bio: string, Birthday: Date): void {
       //this.fetchApiData.getDirector().subscribe((resp: any) => {
       this.dialog.open(DirectorComponent, {
+        data: { 
+          Name: Name,
+          Bio: Bio,
+          Birthday: Birthday,
+        },
        width: '60%',
        height: '60%'
       });
@@ -59,12 +75,16 @@ export class MovieCardComponent implements OnInit {
 }
 
 
-function openSynopsisDialog() : void {
+function openSynopsisDialog(this: any, Title: string, Description: string) : void {
   //throw new Error('');
-  //this.dialog.open(SynopsisComponent, {
-    //width: '60%',
-    //height: '60%'
-  //});
+  this.dialog.open(SynopsisComponent, {
+    data: {
+      Title: Title,
+      Description: Description,
+      width: '60%',
+      height: '60%'
+    }
+   });
 }
 
 function addFavoriteMovie()  {

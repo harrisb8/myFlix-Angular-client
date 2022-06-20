@@ -17,7 +17,7 @@
             <button
                 mat-button
                 color="primary"
-                (click)="openDirectorDialog()"
+                (click)="openDirectorDialog(movie.Director.Name, movie.Director.Bio, movie.Director.Birthdate)"
             >
                 Director
             </button>
@@ -27,8 +27,12 @@
                          >
                 Synopsis
             </button>
-            <mat-icon>
-            favorite_border</mat-icon>
+            <mat-icon *ngIf="SetIcon(movie._id)">
+                favorite
+            </mat-icon>
+            <mat-icon *ngIf="!SetIcon(movie._id)">
+                favorite_border
+            </mat-icon>
         </mat-card-actions>
     </mat-card>
 </div>

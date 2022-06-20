@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-director',
@@ -9,19 +9,28 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class DirectorComponent implements OnInit {
 
-  constructor(public fetchApiData: FetchApiDataService,  public dialog: MatDialog)  {
+    public directorData: any = {};
+  constructor(
+    @Inject(MAT_DIALOG_DATA) 
+    public data: {
+      Description: string;
+      Name: string,
+      Bio: string,
+      Birthday: Date,
+    } ) { }
+   // public fetchApiData: FetchApiDataService,  public dialog: MatDialog)  {
     
-   }
+  // }
 
   ngOnInit(): void {
    // this.director();
   }
 
-  director(Director:any): any {
-    this.fetchApiData.getDirector(Director).subscribe((resp: any) => {
-      this.director = resp;
-      console.log(this.director);
-      return this.director;
-  });
- }
+  //director(Director:any): any {
+    //this.fetchApiData.getDirector(Director).subscribe((resp: any) => {
+      //this.director = resp;
+      //console.log(this.director);
+      //return this.director;
+  //});
+ //}
 }
