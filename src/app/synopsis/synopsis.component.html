@@ -1,8 +1,8 @@
-<p>synopsis works!</p>
-<mat-card>
-    <mat-card-title>{{ data.Title }}</mat-card-title>
+
+<mat-card class="synopsis-dialog">
+    <mat-card-title class="synopsis-dialog-title">{{ data.Title }}</mat-card-title>
     <br />
-    <mat-dialog-content>
-        {{ data.Description }}
+    <mat-dialog-content class="synopsis-dialog-content">
+        <b>Description: </b>{{ data.Description }}
     </mat-dialog-content>
 </mat-card>

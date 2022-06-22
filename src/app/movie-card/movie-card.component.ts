@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { Title } from '@angular/platform-browser';
+//import { title } from 'process';
+//import { stringify } from 'querystring';
 import { DirectorComponent } from '../director/director.component';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { GenreComponent } from '../genre/genre.component';
@@ -33,6 +36,16 @@ export class MovieCardComponent implements OnInit {
         this.movies = resp;
         console.log(this.movies);
         return this.movies;
+      });
+    }
+
+    openMoviesDialog(Title: string, Description: string): void {
+      this.dialog.open(SynopsisComponent, {
+        data: {
+          Title: Title,
+          Description: Description
+        },
+        width: '500px'
       });
     }
 
@@ -75,18 +88,17 @@ export class MovieCardComponent implements OnInit {
 }
 
 
-function openSynopsisDialog(this: any, Title: string, Description: string) : void {
+ //function openSynopsisDialog(this: any) : void {
   //throw new Error('');
-  this.dialog.open(SynopsisComponent, {
-    data: {
-      Title: Title,
-      Description: Description,
-      width: '60%',
-      height: '60%'
-    }
-   });
-}
+  //this.dialog.open(SynopsisComponent, {
+    //width: '60%',
+    //height: '60%'
+  //});
+//}
+
 
 function addFavoriteMovie()  {
  // throw new Error('Function not implemented.');
 }
+
+

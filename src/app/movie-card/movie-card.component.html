@@ -24,7 +24,8 @@
             <button
                 mat-button
                 color="primary"
-                         >
+                (click)="openMoviesDialog(movie.Title, movie.Description)"        
+                >
                 Synopsis
             </button>
             <mat-icon *ngIf="SetIcon(movie._id)">
