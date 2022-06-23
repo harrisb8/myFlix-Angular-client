@@ -33,7 +33,7 @@ export class UserLoginFormComponent implements OnInit {
   loginUser(): void {
     this.fetchApiData.userLogin(this.userData).subscribe((result) => {
       //
-      localStorage.setItem('user', result.user._id);
+      localStorage.setItem('user_id', result.user._id);
       localStorage.setItem('username', result.user.Username);
       localStorage.setItem('user', JSON.stringify(result.user ));
       localStorage.setItem('token', result.token);

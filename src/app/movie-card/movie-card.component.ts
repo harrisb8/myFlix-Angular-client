@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 //import { title } from 'process';
 //import { stringify } from 'querystring';
@@ -20,7 +21,9 @@ export class MovieCardComponent implements OnInit {
   //filled = favorite
   constructor(
     public fetchApiData: FetchApiDataService, 
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, 
+    public snackbar: MatSnackBar
+    ) { }
 
   ngOnInit(): void {
     this.getMovies();
@@ -29,6 +32,33 @@ export class MovieCardComponent implements OnInit {
   }
   getFavoriteMovies(): any {
     return this.fetchApiData.getFavoriteMovies();
+  }
+
+  addFavoriteMovies(Title: any): void {
+    console.log(Title);
+    this.fetchApiData.addFavoriteMovie(Title).subscribe((resp: any) => {
+      this.snackbar.open(`Successfully added ${Title} to favorite movies.`, 'OK', {
+        duration: 4000,
+        verticalPosition: 'top'
+      });
+    })
+  }
+
+  deleteFavoriteMovies(Title: any): void {
+    this.fetchApiData.deleteFavoriteMovie(Title).subscribe((resp: any) => {
+      this.snackbar.open(`Successfully remove ${Title} from favorite movies.`, 'OK', {
+        duration: 4000,
+        verticalPosition: 'top'
+      });
+    })
+  }
+
+  addRemoveFavoriteMovies(Title: any, Id: any) : void {
+    if(this.SetIcon(Id)){
+      this.deleteFavoriteMovies(Title);
+    } else {
+      this.addFavoriteMovies(Title);
+    }
   }
 
   getMovies(): void {
@@ -53,7 +83,6 @@ export class MovieCardComponent implements OnInit {
  
     if (this.getFavoriteMovies().includes(id) )
     {
-      console.log(id)
     return true
     }
     else {
@@ -69,8 +98,7 @@ export class MovieCardComponent implements OnInit {
           Bio: Bio,
           Birthday: Birthday,
         },
-       width: '60%',
-       height: '60%'
+       width: '500px'
       });
       }
  // )}
@@ -79,8 +107,7 @@ export class MovieCardComponent implements OnInit {
      // this.fetchApiData.getGenre().subscribe((resp: any) => {
         this.dialog.open(GenreComponent,  {
           data: { Description: Description },
-          width: '60%' ,
-          height: '60%'
+          width: '500px'
         });
       //})
   }
@@ -88,17 +115,5 @@ export class MovieCardComponent implements OnInit {
 }
 
 
- //function openSynopsisDialog(this: any) : void {
-  //throw new Error('');
-  //this.dialog.open(SynopsisComponent, {
-    //width: '60%',
-    //height: '60%'
-  //});
-//}
-
-
-function addFavoriteMovie()  {
- // throw new Error('Function not implemented.');
-}
 
 

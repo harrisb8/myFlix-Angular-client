@@ -28,12 +28,16 @@
                 >
                 Synopsis
             </button>
-            <mat-icon *ngIf="SetIcon(movie._id)">
-                favorite
-            </mat-icon>
-            <mat-icon *ngIf="!SetIcon(movie._id)">
-                favorite_border
-            </mat-icon>
+            <button
+                (click)="addRemoveFavoriteMovies(movie.Title, movie._id)"    
+            >
+                <mat-icon *ngIf="SetIcon(movie._id)">
+                    favorite
+                </mat-icon>
+                <mat-icon *ngIf="!SetIcon(movie._id)">
+                    favorite_border
+                </mat-icon>
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>

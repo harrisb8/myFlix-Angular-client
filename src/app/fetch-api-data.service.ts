@@ -115,10 +115,11 @@ private handleError(error: HttpErrorResponse): any {
   return JSON.parse(user).FavoriteMovies
 }  
 
- addFavoriteMovie() : Observable<any> {
+ addFavoriteMovie(Title: any) : Observable<any> {
   const token = localStorage.getItem('token');
-  const id = localStorage.getItem('user');
-  return this.http.post(apiUrl +  `user/${id}/movies/`, {headers: new HttpHeaders(
+  const id = localStorage.getItem('user_id');
+  console.log(id);
+  return this.http.post(apiUrl +  `users/${id}/movies/${Title}`, {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })}).pipe(
@@ -151,10 +152,10 @@ private handleError(error: HttpErrorResponse): any {
   );
 }
 
- deleteFavoriteMovie(title: string): Observable<any> {
+ deleteFavoriteMovie(Title: string): Observable<any> {
   const token = localStorage.getItem('token');
-  const username = localStorage.getItem('user');
-  return this.http.delete(apiUrl +  `users/${username}/movies/${title}`, {headers: new HttpHeaders(
+  const id = localStorage.getItem('user_id');
+  return this.http.delete(apiUrl +  `users/${id}/movies/${Title}`, {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })}).pipe(
