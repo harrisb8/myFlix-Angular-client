@@ -12,6 +12,11 @@ import { ProfileViewComponent } from '../profile-view/profile-view.component';
   templateUrl: './welcome-page.component.html',
   styleUrls: ['./welcome-page.component.scss']
 })
+/**
+ * Export data that the user will see once the welcome page loads
+ * User will be able to sign up, login in and view movies once logged in
+ * @param data
+ */
 export class WelcomePageComponent implements OnInit {
 
   constructor(public dialog: MatDialog) { }

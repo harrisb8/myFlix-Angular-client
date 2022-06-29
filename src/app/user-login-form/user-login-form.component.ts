@@ -15,6 +15,9 @@ import { Router } from '@angular/router';
   templateUrl: './user-login-form.component.html',
   styleUrls: ['./user-login-form.component.scss']
 })
+/**
+ * Gets information and stores it into userCredentials
+ */
 export class UserLoginFormComponent implements OnInit {
   /*
   get information and store it into userCredentials
@@ -27,7 +30,10 @@ export class UserLoginFormComponent implements OnInit {
     public snackBar: MatSnackBar,
     public router: Router 
     ) { }
-
+    /**
+     * Checks users data user id, username, token to determine is the login was a success or an error
+     * Once credentials are approved user will have access to the movies
+     */
   ngOnInit(): void {}
   //this sends code/ function send the form input to the backend
   loginUser(): void {

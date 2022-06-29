@@ -1,6 +1,9 @@
+
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DirectorComponent } from './director.component';
+
+
 
 describe('DirectorComponent', () => {
   let component: DirectorComponent;

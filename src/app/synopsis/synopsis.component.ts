@@ -7,6 +7,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   templateUrl: './synopsis.component.html',
   styleUrls: ['./synopsis.component.scss']
 })
+
+/**
+ * Export data to give a description along with the title of the movie being displayed
+ * @param data 
+ */
 export class SynopsisComponent implements OnInit {
  
   public synopsisData: any = {};

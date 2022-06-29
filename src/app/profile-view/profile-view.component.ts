@@ -9,6 +9,10 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './profile-view.component.html',
   styleUrls: ['./profile-view.component.scss']
 })
+/**
+ * Exports User data username, email and birthday in order to gain access to the movie api
+ * @param data
+ */
 export class ProfileViewComponent implements OnInit {
   @Input() userData = { Username: '', Email: '', Birthday: ''};
   constructor(
@@ -33,17 +37,5 @@ export class ProfileViewComponent implements OnInit {
      this.dialogRef.close();
     }
     });
-  }
-  
-  //function setIcon() {
-    // 
-    //if (movies.find(x=> favoriteMovies.includes(x._id)) )
-    //{
-    //retun true
-    //}
-    //else {
-    //return false
-    //}
-    
-
+  }  
 }
