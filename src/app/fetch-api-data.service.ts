@@ -37,7 +37,7 @@ export class FetchApiDataService {
 
 private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
-    console.error('Some error occurred:', error.error.message);
+    console.error('Some error occurred:', error.error);
     } else {
     console.error(
         `Error Status code ${JSON.stringify(error.status)}, ` +
@@ -111,15 +111,22 @@ private handleError(error: HttpErrorResponse): any {
 }
 
  getFavoriteMovies(): Observable<any> {
-  const user: any = localStorage.getItem("user")
-  return JSON.parse(user).FavoriteMovies
+  const id = localStorage.getItem('user_id');
+  const token = localStorage.getItem('token');
+    return this.http.get(apiUrl + 'users', {headers: new HttpHeaders(
+      {
+        Authorization: 'Bearer ' + token,
+      })}).pipe(
+      map(this.extractResponseData),
+      catchError(this.handleError)
+    );
 }  
 
- addFavoriteMovie(Title: any) : Observable<any> {
+ addFavoriteMovie(Title: string) : Observable<any> {
   const token = localStorage.getItem('token');
   const id = localStorage.getItem('user_id');
   console.log(id);
-  return this.http.post(apiUrl +  `users/${id}/movies/${Title}`, {headers: new HttpHeaders(
+  return this.http.post(apiUrl +  `users/${id}/movies/${Title}`, {}, {headers: new HttpHeaders(
     {
       Authorization: 'Bearer ' + token,
     })}).pipe(
@@ -164,3 +171,4 @@ private handleError(error: HttpErrorResponse): any {
   );
   }
 }
+

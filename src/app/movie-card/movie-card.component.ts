@@ -14,6 +14,9 @@ import { SynopsisComponent } from '../synopsis/synopsis.component';
   templateUrl: './movie-card.component.html',
   styleUrls: ['./movie-card.component.scss']
 })
+/**
+ * Exports movies, and favorite movies as the user clicks on the heart to mark movies they like
+ */
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
   favoriteMovies: any[] = [];
@@ -27,11 +30,15 @@ export class MovieCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getMovies();
-    console.log(this.getFavoriteMovies()) 
+    this.getFavoriteMovies(); 
    
   }
-  getFavoriteMovies(): any {
-    return this.fetchApiData.getFavoriteMovies();
+  getFavoriteMovies(): void {
+    this.fetchApiData.getFavoriteMovies().subscribe((resp: any) => {
+      console.log("...line 38...")
+    console.log(resp);
+    this.favoriteMovies= resp.find((x:any)=>x._id === localStorage.getItem('user_id') ).FavoriteMovies;
+    })
   }
 
   addFavoriteMovies(Title: any): void {
@@ -80,8 +87,8 @@ export class MovieCardComponent implements OnInit {
     }
 
     SetIcon(id: any): boolean {
- 
-    if (this.getFavoriteMovies().includes(id) )
+    //console.log(this.favoriteMovies);
+    if (this.favoriteMovies.includes(id) )
     {
     return true
     }
