@@ -21,6 +21,11 @@ export class FetchApiDataService {
   constructor(private http: HttpClient) {
   }
  // Making the api call for the user registration endpoint
+ /**
+  * Function that makes the api call for the user registration endpoint
+  * @param userDetails 
+  * @returns 
+  */
   public userRegistration(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'users', userDetails).pipe(
@@ -28,6 +33,11 @@ export class FetchApiDataService {
     );
   }
 
+  /**
+   * Function used to create user login 
+   * @param userDetails 
+   * @returns 
+   */
   public userLogin(userDetails: any): Observable<any> {
     console.log(userDetails);
     return this.http.post(apiUrl + 'login', userDetails).pipe(
@@ -35,6 +45,11 @@ export class FetchApiDataService {
     );
   }
 
+  /**
+   * Functions that handles error and returns a message if there is an error
+   * @param error 
+   * @returns 
+   */
 private handleError(error: HttpErrorResponse): any {
     if (error.error instanceof ErrorEvent) {
     console.error('Some error occurred:', error.error);
@@ -47,6 +62,10 @@ private handleError(error: HttpErrorResponse): any {
     'Something bad happened; please try again later.');
   }
 
+  /**
+   * Function to get movies establish from the backend
+   * @returns 
+   */
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     //const newLocal = map(this.extractResponseData);
@@ -64,6 +83,11 @@ private handleError(error: HttpErrorResponse): any {
     return body || { };
   }
 
+  /**
+   * Function that will get a single movie 
+   * @returns 
+   */
+
   getSingleMovie(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http.get(apiUrl + 'movies/:Title', {headers: new HttpHeaders(
@@ -74,6 +98,12 @@ private handleError(error: HttpErrorResponse): any {
       catchError(this.handleError)
     );
   }
+
+  /**
+   * Function that will retrive directors info
+   * @param Director 
+   * @returns 
+   */
 
   getDirector(Director: any): Observable<any> {
     const token = localStorage.getItem('token');
@@ -86,6 +116,11 @@ private handleError(error: HttpErrorResponse): any {
     );
   }
   
+  /**
+   * Function that get genre information
+   * @param Genre 
+   * @returns 
+   */
 
   getGenre(Genre: any): Observable<any> {
     const token = localStorage.getItem('token');
@@ -97,6 +132,11 @@ private handleError(error: HttpErrorResponse): any {
       catchError(this.handleError)
     );
   }
+
+/**
+ * Function that gets user profile once they register
+ * @returns 
+ */
 
  getUserProfile() : Observable<any> {
   const token = localStorage.getItem('token');
@@ -110,6 +150,11 @@ private handleError(error: HttpErrorResponse): any {
   );
 }
 
+/**
+ * Function that returns users favortie movies
+ * @returns 
+ */
+
  getFavoriteMovies(): Observable<any> {
   const id = localStorage.getItem('user_id');
   const token = localStorage.getItem('token');
@@ -121,6 +166,12 @@ private handleError(error: HttpErrorResponse): any {
       catchError(this.handleError)
     );
 }  
+
+/**
+ * Function that returns users favorite movies
+ * @param Title 
+ * @returns 
+ */
 
  addFavoriteMovie(Title: string) : Observable<any> {
   const token = localStorage.getItem('token');
@@ -135,6 +186,11 @@ private handleError(error: HttpErrorResponse): any {
   );
 }
 
+/**
+ * Function that changes the user profile
+ * @returns 
+ */
+
  editUserProfile() : Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
@@ -147,6 +203,11 @@ private handleError(error: HttpErrorResponse): any {
   );
 }
 
+/**
+ * Function that deletes user profile
+ * @returns 
+ */
+
  deleteUserProfile( ): Observable<any> {
   const token = localStorage.getItem('token');
   const username = localStorage.getItem('user');
@@ -158,6 +219,12 @@ private handleError(error: HttpErrorResponse): any {
     catchError(this.handleError)
   );
 }
+
+/**
+ * Function that deletes favorite movie
+ * @param Title 
+ * @returns 
+ */
 
  deleteFavoriteMovie(Title: string): Observable<any> {
   const token = localStorage.getItem('token');
