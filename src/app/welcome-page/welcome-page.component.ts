@@ -23,22 +23,34 @@ export class WelcomePageComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  /**
+   * Function that opens user registration dialog
+   */
   openUserRegistrationDialog(): void {
     this.dialog.open(UserRegistrationFormComponent, {
       width: '280px'
     });
   }
+  /**
+   * Function that opens user login dialog
+   */
   openUserLoginDialog(): void {
     this.dialog.open(UserLoginFormComponent, {
      width: '280px'
     });
   }
+  /**
+   * Function that opens movie dialog
+   */
   openMoviesDialog(): void {
     this.dialog.open(MovieCardComponent, {
      width: '80%',
      height: '80%'
     });
   }
+  /**
+   * Function that opens profile dialog
+   */
   openProfileDialog(): void {
     this.dialog.open(ProfileViewComponent, {
      width: '280px'
